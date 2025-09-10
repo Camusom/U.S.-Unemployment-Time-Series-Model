@@ -67,6 +67,14 @@ forecast_df <- data.frame(
   Hi_95 = as.numeric(forecast_values$upper[, "95%"])
 )
 
+# Extract the forecasted values and actual values
+forecasted <- as.numeric(forecast_values$mean)
+actual <- as.numeric(future_unemployment)
+
+# Calculate MAE (Mean Absolute Error)
+mae <- mean(abs(forecasted - actual))
+print(paste("MAE:", round(mae, 4)))
+
 # --- 3. Create the Plot with a Dedicated Labeling Area ---
 
 # Define a start date to zoom in on
